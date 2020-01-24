@@ -42,17 +42,16 @@ def check_keyup_events(event, ship):
     elif event.key == pygame.K_LEFT:
         ship.moving_left = False
 
-def update_bullets(bullets, aliens):
+def update_bullets(ai_settings, bullets, aliens, ship, screen):
     bullets.update()
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
-    '''
     if len(aliens) == 0:
         bullets.empty()
         create_fleet(ai_settings, ship, screen, aliens)
-        '''
+
 
 
 def update_screen(ai_settings, screen, ship, bullets, aliens):
