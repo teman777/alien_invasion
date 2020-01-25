@@ -1,4 +1,5 @@
 import pygame
+import time
 from settings import Settings
 from ship import Ship
 import game_functions as gf
@@ -21,5 +22,6 @@ def run_game():
         gf.update_bullets(ai_settings, bullets,aliens, ship, screen)
         gf. update_aliens(ai_settings, aliens)
         gf.update_screen(ai_settings, screen, ship, bullets, aliens)
+        time.sleep(0.001)
 
 run_game()
