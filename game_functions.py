@@ -47,7 +47,7 @@ def update_bullets(ai_settings, bullets, aliens, ship, screen):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
-    check_collisions(bullets, aliens, ai_settings, ship, screen) 
+    check_collisions(bullets, aliens, ai_settings, ship, screen)
 
 def update_screen(ai_settings, screen, ship, bullets, aliens):
     screen.fill(ai_settings.bg_color)
@@ -57,9 +57,11 @@ def update_screen(ai_settings, screen, ship, bullets, aliens):
     aliens.draw(screen)
     pygame.display.flip()
 
-def update_aliens(ai_settings, aliens):
+def update_aliens(ai_settings, aliens, ship):
     check_fleet_edges(ai_settings, aliens)
     aliens.update()
+    if pygame.sprite.spritecollideany(ship, aliens):
+        print("Pizda")
 def get_number_aliens_x(ai_settings, alien_width):
     available_space_x = ai_settings.screen_width - 2 * alien_width
     number_aliens_x = int(available_space_x / (2 * alien_width))
@@ -95,5 +97,3 @@ def check_collisions(bullets,aliens,ai_settings,ship,screen):
     if len(aliens) == 0:
         bullets.empty()
         create_fleet(ai_settings, ship, screen, aliens)
-
-
