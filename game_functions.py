@@ -47,7 +47,7 @@ def update_bullets(ai_settings, bullets, aliens, ship, screen):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
-    check_collisions(bullets, aliens, ai_settings, ship, screen) 
+    check_collisions(bullets, aliens, ai_settings, ship, screen)
 
 def update_screen(ai_settings, screen, ship, bullets, aliens):
     screen.fill(ai_settings.bg_color)
@@ -97,3 +97,5 @@ def check_collisions(bullets,aliens,ai_settings,ship,screen):
         create_fleet(ai_settings, ship, screen, aliens)
 
 
+def game_end():
+    return 0
