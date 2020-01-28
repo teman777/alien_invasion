@@ -7,7 +7,7 @@ from pygame.sprite import Group
 from game_stats import GameStats
 from button import Button
 from scoreboard import Scoreboard
-
+from record import Record
 
 def run_game():
     pygame.init()
@@ -20,6 +20,7 @@ def run_game():
     pygame.display.set_caption("Alien Invasion")
     play_button = Button(ai_settings, screen, "Play")
     stats = GameStats(ai_settings)
+    record = Record()
     sb = Scoreboard(ai_settings, screen, stats)
     while True:
         gf.check_events(ai_settings, screen, ship, bullets, play_button, stats, aliens)
