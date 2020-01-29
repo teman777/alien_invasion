@@ -19,7 +19,7 @@ def run_game():
     gf.create_fleet(ai_settings,ship,screen, aliens)
     pygame.display.set_caption("Alien Invasion")
     play_button = Button(ai_settings, screen, "Play")
-    stats = GameStats(ai_settings)
+    stats = GameStats(ai_settings, screen)
     record = Record(screen, ai_settings)
     sb = Scoreboard(ai_settings, screen, stats)
     while True:
