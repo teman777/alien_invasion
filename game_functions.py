@@ -80,13 +80,16 @@ def update_bullets(ai_settings, bullets, aliens, ship, screen, stats, sb):
             bullets.remove(bullet)
     check_collisions(bullets, aliens, ai_settings, ship, screen, stats, sb)
 
-def update_screen(ai_settings, screen, ship, bullets, aliens, play_button, stats, sb):
+def update_screen(ai_settings, screen, ship, bullets, aliens, play_button, stats, sb, record):
     screen.fill(ai_settings.bg_color)
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     ship.blitme()
     aliens.draw(screen)
     sb.show_score()
+    if stats.score > record.record:
+        record.save_record(stats.score)
+    record.draw()
     if not stats.game_active:
         play_button.draw_button()
     pygame.display.flip()

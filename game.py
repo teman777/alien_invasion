@@ -20,11 +20,11 @@ def run_game():
     pygame.display.set_caption("Alien Invasion")
     play_button = Button(ai_settings, screen, "Play")
     stats = GameStats(ai_settings)
-    record = Record()
+    record = Record(screen, ai_settings)
     sb = Scoreboard(ai_settings, screen, stats)
     while True:
         gf.check_events(ai_settings, screen, ship, bullets, play_button, stats, aliens)
-        gf.update_screen(ai_settings, screen, ship, bullets, aliens, play_button,stats, sb)
+        gf.update_screen(ai_settings, screen, ship, bullets, aliens, play_button,stats, sb, record)
         if stats.game_active:
             ship.update()
             gf.update_bullets(ai_settings, bullets,aliens, ship, screen, stats, sb)
