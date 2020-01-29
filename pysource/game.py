@@ -22,6 +22,7 @@ def run_game():
     stats = GameStats(ai_settings, screen)
     record = Record(screen, ai_settings)
     sb = Scoreboard(ai_settings, screen, stats)
+    tick = pygame.time.Clock()
     while True:
         gf.check_events(ai_settings, screen, ship, bullets, play_button, stats, aliens)
         gf.update_screen(ai_settings, screen, ship, bullets, aliens, play_button,stats, sb, record)
@@ -29,8 +30,8 @@ def run_game():
             ship.update()
             gf.update_bullets(ai_settings, bullets,aliens, ship, screen, stats, sb)
             gf.update_aliens(ai_settings, aliens, ship, bullets, stats, screen)
+        tick.tick(200)
 
-        time.sleep(0.001)
 
 
 run_game()
