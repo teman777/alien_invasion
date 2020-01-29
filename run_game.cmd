@@ -1,3 +1,3 @@
 pip install pygame
 
-python game.py
+python pysource/game.py
