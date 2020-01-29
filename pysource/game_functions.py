@@ -57,7 +57,8 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets, stats, alien
     elif event.key == pygame.K_q:
         sys.exit()
     elif event.key == pygame.K_p:
-        prepare_start_game(ai_settings, stats, aliens, bullets, ship, screen)
+        if not stats.game_active:
+            prepare_start_game(ai_settings, stats, aliens, bullets, ship, screen)
 
 def create_fleet(ai_settings,ship,screen, aliens):
     alien = Alien(ai_settings, screen)
