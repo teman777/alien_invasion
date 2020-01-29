@@ -15,10 +15,13 @@ class Record():
 
 
     def load_record(self):
-        with open("data/record.txt", "r") as f:
-            self.record = int(f.read())
-        if self.record is None:
-            self.record = 0
+        try:
+            with open("data/record.txt", "r") as f:
+                self.record = int(f.read())
+        except IOError:
+            with open("data/record.txt","w") as f:
+                self.record = 0
+                f.write(str(0)) 
 
     def save_record(self, record):
         self.record = record
