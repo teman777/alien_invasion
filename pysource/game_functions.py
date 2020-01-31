@@ -18,9 +18,11 @@ def ship_hit(ai_settings, stats, screen, ship, aliens, bullets):
         stats.game_active = False
         pygame.mouse.set_visible(True)
 
-def check_events(ai_settings, screen, ship, bullets, play_button, stats, aliens):
+def check_events(ai_settings, screen, ship, bullets, play_button, stats, aliens, record):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            if stats.score > record.record:
+                record.save_record(int(stats.score))
             sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
@@ -95,7 +97,7 @@ def update_screen(ai_settings, screen, ship, bullets, aliens, play_button, stats
     aliens.draw(screen)
     sb.show_score()
     if stats.score > record.record:
-        record.save_record(stats.score)
+        record.update_record(stats.score)
     record.draw()
     stats.draw_lifebar()
     if not stats.game_active:

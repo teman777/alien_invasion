@@ -21,10 +21,13 @@ class Record():
         except IOError:
             with open("data/record.txt","w") as f:
                 self.record = 0
-                f.write(str(0)) 
+                f.write(str(0))
 
-    def save_record(self, record):
+    def update_record(self, record):
         self.record = record
+
+
+    def save_record(self):
         with open("data/record.txt", "w") as f:
             f.write(str(self.record))
 

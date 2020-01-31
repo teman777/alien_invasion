@@ -24,7 +24,7 @@ def run_game():
     sb = Scoreboard(ai_settings, screen, stats)
     tick = pygame.time.Clock()
     while True:
-        gf.check_events(ai_settings, screen, ship, bullets, play_button, stats, aliens)
+        gf.check_events(ai_settings, screen, ship, bullets, play_button, stats, aliens, record)
         gf.update_screen(ai_settings, screen, ship, bullets, aliens, play_button,stats, sb, record)
         if stats.game_active:
             ship.update()
